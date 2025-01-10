@@ -13,5 +13,12 @@ def home(request):
     context = {'projects': projects, 'skills': skills, 'detailedSkills': detailedskills}
 
     return render(request, 'base/home.html', context)
-# {'projects': Project.objects.all()}
-#
+
+def projectPage(request, pk):
+    projectObj = Project.objects.get(id=pk)
+
+    return render(request, 'base/project.html', {'project': projectObj})
+
+def addProject(request):
+    context = {}
+    return render(request, 'base/project_form.html', context)
